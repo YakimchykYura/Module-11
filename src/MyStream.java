@@ -1,9 +1,7 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import static java.util.Arrays.stream;
 
@@ -32,7 +30,7 @@ public class MyStream {
 
           String result = Arrays.asList(string).stream()
                  .flatMap(f -> stream(f.split(", ")))
-                 .sorted(Comparator.naturalOrder())
+                 .sorted(Comparator.comparingInt(Integer::parseInt))
                   .collect(Collectors.joining(", ", "\"", "\""));
 
         System.out.println(result);
@@ -57,10 +55,10 @@ public class MyStream {
     private static boolean next = false;
     private static <T> T getNext(Iterator<T> firstIterator, Iterator<T> secondIterator) {
         next = !next;
-        if (firstIterator.hasNext() && next) {
-            return firstIterator.next();
-        }
-        if (secondIterator.hasNext()) {
+        if (firstIterator.hasNext() && secondIterator.hasNext()) {
+            if (next) {
+                return firstIterator.next();
+            }
             return secondIterator.next();
         }
         return null;

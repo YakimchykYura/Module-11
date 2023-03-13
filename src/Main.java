@@ -17,13 +17,13 @@ public class Main {
         names.add("Lera");
 //        stream.newNames(names);
 //        stream.namesToUpperCase(names);
-//        String[] string = {"1, 2, 0", "4, 5"};
+//        String[] string = { "1, 2, 0", "4, 5", "11, 22"};
 //        stream.searchFigure(string);
 
 
 //        var endlessStream = stream.streamIterator(25214903917L,11, 2^48L, 1);
 //        endlessStream.forEach(System.out::println);
-        Stream<Integer> s1 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).stream();
+        Stream<Integer> s1 = Arrays.asList(1, 2, 3, 4, 5, 6).stream();
         Stream<Integer> s2 = Arrays.asList(-1, -2, -3, -4, -5, -6, -7, -8, -9).stream();
             stream.zip(s1,s2)
                     .forEach(System.out::println);
